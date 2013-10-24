@@ -22,5 +22,4 @@
 #  Copyright © 2013 Deed Poll Office Ltd
 
 User-agent: *
-/form
 

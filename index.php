@@ -23,15 +23,15 @@
     setcookie('seen_cookie_notice', '1', 0, '/');
 
     $page = null;
-    if (preg_match('!^/([a-z][a-z.-]*)!i', $_SERVER['REQUEST_URI'], $matches)) {
-        $page = $matches[1];
+    if (preg_match('!^/([a-z][a-z.-]*)?(\?|$)!i', $_SERVER['REQUEST_URI'], $matches)) {
+        if (isset($matches[1])) $page = $matches[1];
+        if ($page == '') $page = 'form';
         if ($page != strtolower($page)) {
             header("HTTP/1.1 301 Moved Permanently");
             header("Location: /" . strtolower($page));
             die;
         }
     }
-    if ($page == '') $page = 'form';
     if ($is404 = !in_array($page, $pages = [ 'form', 'deed-poll', 'download', 'terms', 'privacy', 'cookies', 'about', 'who-we-are', 'what-next', 'names', 'robots.txt' ])) {
         header('HTTP/1.1 404 Not Found');
     }
@@ -123,6 +123,10 @@
     <title>FREE DEED POLL.org</title>
     <meta name="description" content="Create your own deed poll">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="/<?php echo htmlspecialchars($page == 'form' ? '' : $page); ?>" />
+<?php if (in_array($page, [ 'deed-poll' ])) { ?>
+    <meta name="robots" content="noindex" />
+<?php } ?>
 
     <!--[if gte IE 8]><!-->
       <link href="/css/freedeedpoll.min.css" rel="stylesheet" media="screen">
