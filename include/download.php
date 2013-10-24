@@ -18,15 +18,17 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+function escape_rtf($text) { return utf8_decode(str_replace(array('\\', '{', '}'), array('\\\\', '\{', '\}'), $text)); }
+
 $ret = file_get_contents("$rootDir/docs/deed_poll_template.rtf");
 
-$ret = str_replace('(NEW NAME)', $data['new_name']['value'], $ret);
-$ret = str_replace('(OLD NAME)', $data['old_name']['value'], $ret);
+$ret = str_replace('(NEW NAME)', escape_rtf($data['new_name']['value']), $ret);
+$ret = str_replace('(OLD NAME)', escape_rtf($data['old_name']['value']), $ret);
 if (!$data['suitable_for_enrolment']['value']) {
     $ret = str_replace(', (MARITAL STATUS), and a (TYPE OF CITIZEN) under section (SECTION) of the British Nationality Act 1981', '', $ret);
 }
 if (preg_match('/\bcivil partner\b/', $data['marital_status']['value'])) $data['marital_status']['value'] = "a {$data['marital_status']['value']}";
-$ret = str_replace('(MARITAL STATUS)', $data['marital_status']['value'], $ret);
+$ret = str_replace('(MARITAL STATUS)', escape_rtf($data['marital_status']['value']), $ret);
 switch (true) {
     case (preg_match('/_botc$/', $data['citizenship']['value'])):
 	$citizen = 'British overseas territories citizen';
@@ -41,26 +43,26 @@ switch (true) {
 	$citizen = 'British citizen';
 	break;
 }
-$ret = str_replace('(TYPE OF CITIZEN)', $citizen, $ret);
-$ret = str_replace('(SECTION)', preg_replace('/_[a-z]+$/', '', $data['citizenship']['value']), $ret);
+$ret = str_replace('(TYPE OF CITIZEN)', escape_rtf($citizen), $ret);
+$ret = str_replace('(SECTION)', escape_rtf(preg_replace('/_[a-z]+$/', '', $data['citizenship']['value'])), $ret);
 $address = [];
 foreach ([ 'line_1', 'line_2', 'city', 'zip' ] as $part) {
     $address[] = $data[$key = "address_{$part}"]['value'] != '' ? $data[$key]['value'] : '';
 }
-$ret = str_replace('(' . strtoupper(str_replace('_', ' ', $type)) . 'ADDRESS)', implode(', ', $address), $ret);
+$ret = str_replace('(' . strtoupper(str_replace('_', ' ', $type)) . 'ADDRESS)', escape_rtf(implode(', ', $address)), $ret);
 $useTwoWitnesses = $data['suitable_for_enrolment']['value'] || $data['use_second_witness']['value'];
 foreach ([ 'witness_1_', 'witness_2_' ] as $type) {
     $address = [];
     foreach ([ 'name', 'address_line_1', 'address_line_2', 'address_city', 'address_zip' ] as $part) {
 	$value = $data["{$type}{$part}"]['value'];
 	if ($type == 'witness_2_' && !$useTwoWitnesses) $value = '';
-	$ret = str_replace('(' . strtoupper(str_replace('_', ' ', "{$type}{$part}")) . ')', $value, $ret);
+	$ret = str_replace('(' . strtoupper(str_replace('_', ' ', "{$type}{$part}")) . ')', escape_rtf($value), $ret);
     }
 }
 $ret = str_replace('(WITNESS 1 SIGNATURE)', $signature = '_________________________________', $ret);
 $ret = str_replace('(WITNESS 2 SIGNATURE)', $useTwoWitnesses ? $signature : '', $ret);
-$ret = str_replace('(WITNESS 1 OCCUPATION)', "Occupation: {$data['witness_1_occupation']['value']}", $ret);
-$ret = str_replace('(WITNESS 2 OCCUPATION)', $useTwoWitnesses ? "Occupation: {$data['witness_2_occupation']['value']}" : '', $ret);
+$ret = str_replace('(WITNESS 1 OCCUPATION)', escape_rtf("Occupation: {$data['witness_1_occupation']['value']}"), $ret);
+$ret = str_replace('(WITNESS 2 OCCUPATION)', escape_rtf($useTwoWitnesses ? "Occupation: {$data['witness_2_occupation']['value']}" : ''), $ret);
 if ($data['date']['value'] == 'manually') {
     $day   = '_____';
     $month = '__________________';
@@ -71,9 +73,9 @@ if ($data['date']['value'] == 'manually') {
     $month = $date->format('F');
     $year  = $date->format('y');
 }
-$ret = str_replace('(DAY)',   $day, $ret);
-$ret = str_replace('(MONTH)', $month, $ret);
-$ret = str_replace('(YEAR)',  $year, $ret);
+$ret = str_replace('(DAY)',   escape_rtf($day), $ret);
+$ret = str_replace('(MONTH)', escape_rtf($month), $ret);
+$ret = str_replace('(YEAR)',  escape_rtf($year), $ret);
 #echo $ret;die;
 
 if ($_REQUEST['format'] == 'pdf') {
