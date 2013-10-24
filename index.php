@@ -201,16 +201,14 @@
 <?php } ?>
 
 
-    <!--
     <script>
         (function(a,b,c,d,e,f){a.GoogleAnalyticsObject=d;a[d]||(a[d]=
         function(){(a[d].q=a[d].q||[]).push(arguments)});a[d].d=+new Date;
         e=b.createElement(c);f=b.getElementsByTagName(c)[0];
         e.src='//www.google-analytics.com/analytics.js';
         f.parentNode.insertBefore(e,f)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
+        ga('create','UA-34092070-2');ga('send','pageview');
     </script>
-    -->
 
     <!--[if gte IE 8]><!-->
       <script src="/js/bootstrap.min.js"></script>
