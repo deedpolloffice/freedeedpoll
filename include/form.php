@@ -32,7 +32,7 @@
         <form class="form-horizontal
             <?php if ($data['suitable_for_enrolment']['value']) {?>suitable-for-enrolment<?php } ?>
             <?php if ($data['use_second_witness']['value']) {?>use-second-witness<?php } ?>
-            " role="form" action="/form" method="post">
+            " role="form" action="/" method="post">
 
         <fieldset>
         <legend>Your change of name</legend>

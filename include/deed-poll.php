@@ -22,16 +22,67 @@
 <p>
     <strong>Download your generated deed poll:</strong>
 </p>
-<ul>
-    <li><img src="/img/pdf_small.png" /> <a href="/download?<?php echo htmlspecialchars(http_build_query(array_merge($params, [ 'format' => 'pdf' ]))); ?>">in PDF format</a>
-    <li><img src="/img/word_small.png" /> <a href="/download?<?php echo htmlspecialchars(http_build_query(array_merge($params, [ 'format' => 'word' ]))); ?>">in Word format</a>
-</ul>
+<form method="post" action="/download">
+    <input type="hidden" name="old_name"                 value="<?php echo htmlspecialchars($data['old_name']['value']); ?>" />
+    <input type="hidden" name="new_name"                 value="<?php echo htmlspecialchars($data['new_name']['value']); ?>" />
+    <input type="hidden" name="address_line_1"           value="<?php echo htmlspecialchars($data['address_line_1']['value']); ?>" />
+    <input type="hidden" name="address_line_2"           value="<?php echo htmlspecialchars($data['address_line_2']['value']); ?>" />
+    <input type="hidden" name="address_city"             value="<?php echo htmlspecialchars($data['address_city']['value']); ?>" />
+    <input type="hidden" name="address_zip"              value="<?php echo htmlspecialchars($data['address_zip']['value']); ?>" />
+    <input type="hidden" name="date"                     value="<?php echo htmlspecialchars($data['date']['value']); ?>" />
+    <input type="hidden" name="suitable_for_enrolment"   value="<?php echo htmlspecialchars($data['suitable_for_enrolment']['value']); ?>" />
+    <input type="hidden" name="marital_status"           value="<?php echo htmlspecialchars($data['marital_status']['value']); ?>" />
+    <input type="hidden" name="citizenship"              value="<?php echo htmlspecialchars($data['citizenship']['value']); ?>" />
+    <input type="hidden" name="witness_1_name"           value="<?php echo htmlspecialchars($data['witness_1_name']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_line_1" value="<?php echo htmlspecialchars($data['witness_1_address_line_1']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_line_2" value="<?php echo htmlspecialchars($data['witness_1_address_line_2']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_city"   value="<?php echo htmlspecialchars($data['witness_1_address_city']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_zip"    value="<?php echo htmlspecialchars($data['witness_1_address_zip']['value']); ?>" />
+    <input type="hidden" name="witness_1_occupation"     value="<?php echo htmlspecialchars($data['witness_1_occupation']['value']); ?>" />
+    <input type="hidden" name="use_second_witness"       value="<?php echo htmlspecialchars($data['use_second_witness']['value']); ?>" />
+    <input type="hidden" name="witness_2_name"           value="<?php echo htmlspecialchars($data['witness_2_name']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_line_1" value="<?php echo htmlspecialchars($data['witness_2_address_line_1']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_line_2" value="<?php echo htmlspecialchars($data['witness_2_address_line_2']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_city"   value="<?php echo htmlspecialchars($data['witness_2_address_city']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_zip"    value="<?php echo htmlspecialchars($data['witness_2_address_zip']['value']); ?>" />
+    <input type="hidden" name="witness_2_occupation"     value="<?php echo htmlspecialchars($data['witness_2_occupation']['value']); ?>" />
+    <ul>
+        <li><img src="/img/pdf_small.png" />&nbsp;&nbsp;&nbsp;<input type="submit" name="pdf" class="btn btn-primary btn-xs" value="Download in PDF format" />
+    </p>
+        <li><img src="/img/word_small.png" />&nbsp;&nbsp;&nbsp;<input type="submit" name="word" class="btn btn-primary btn-xs" value="Download in Word format" />
+    </ul>
+</form>
 
 <br />
 <br />
-<p>
-    <a class="btn btn-primary" href="/form?<?php echo htmlspecialchars(http_build_query(array_merge($params))); ?>">Change my details</a>
-</p>
+<form method="post" action="/">
+    <input type="hidden" name="old_name"                 value="<?php echo htmlspecialchars($data['old_name']['value']); ?>" />
+    <input type="hidden" name="new_name"                 value="<?php echo htmlspecialchars($data['new_name']['value']); ?>" />
+    <input type="hidden" name="address_line_1"           value="<?php echo htmlspecialchars($data['address_line_1']['value']); ?>" />
+    <input type="hidden" name="address_line_2"           value="<?php echo htmlspecialchars($data['address_line_2']['value']); ?>" />
+    <input type="hidden" name="address_city"             value="<?php echo htmlspecialchars($data['address_city']['value']); ?>" />
+    <input type="hidden" name="address_zip"              value="<?php echo htmlspecialchars($data['address_zip']['value']); ?>" />
+    <input type="hidden" name="date"                     value="<?php echo htmlspecialchars($data['date']['value']); ?>" />
+    <input type="hidden" name="suitable_for_enrolment"   value="<?php echo htmlspecialchars($data['suitable_for_enrolment']['value']); ?>" />
+    <input type="hidden" name="marital_status"           value="<?php echo htmlspecialchars($data['marital_status']['value']); ?>" />
+    <input type="hidden" name="citizenship"              value="<?php echo htmlspecialchars($data['citizenship']['value']); ?>" />
+    <input type="hidden" name="witness_1_name"           value="<?php echo htmlspecialchars($data['witness_1_name']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_line_1" value="<?php echo htmlspecialchars($data['witness_1_address_line_1']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_line_2" value="<?php echo htmlspecialchars($data['witness_1_address_line_2']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_city"   value="<?php echo htmlspecialchars($data['witness_1_address_city']['value']); ?>" />
+    <input type="hidden" name="witness_1_address_zip"    value="<?php echo htmlspecialchars($data['witness_1_address_zip']['value']); ?>" />
+    <input type="hidden" name="witness_1_occupation"     value="<?php echo htmlspecialchars($data['witness_1_occupation']['value']); ?>" />
+    <input type="hidden" name="use_second_witness"       value="<?php echo htmlspecialchars($data['use_second_witness']['value']); ?>" />
+    <input type="hidden" name="witness_2_name"           value="<?php echo htmlspecialchars($data['witness_2_name']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_line_1" value="<?php echo htmlspecialchars($data['witness_2_address_line_1']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_line_2" value="<?php echo htmlspecialchars($data['witness_2_address_line_2']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_city"   value="<?php echo htmlspecialchars($data['witness_2_address_city']['value']); ?>" />
+    <input type="hidden" name="witness_2_address_zip"    value="<?php echo htmlspecialchars($data['witness_2_address_zip']['value']); ?>" />
+    <input type="hidden" name="witness_2_occupation"     value="<?php echo htmlspecialchars($data['witness_2_occupation']['value']); ?>" />
+    <p>
+        <input type="submit" name="change" class="btn" value="Change my details" />
+    </p>
+</form>
 <br />
 <br />
 

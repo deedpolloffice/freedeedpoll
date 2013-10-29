@@ -71,6 +71,7 @@
             $error = null;
             if ( isset($_POST) &&
                  $_POST &&
+                 isset($_POST['submit']) &&
                  $value == '' &&
                  ( ( !in_array($key, [ 'address_line_2', 'marital_status', 'citizenship', 'witness_1_address_line_2', 'use_second_witness' ]) &&
                      !preg_match('/^witness_2_/', $key)
@@ -99,10 +100,8 @@
         $params = [];
         foreach ($data as $key => $value) $params[$key] = $value['value'];
 
-        if ($page == 'form' && isset($_POST) && $_POST && $formIsValid) {
-            header("HTTP/1.1 303 See Other");
-            header("Location: /deed-poll?" . http_build_query($params));
-            die;
+        if ($page == 'form' && isset($_POST['submit']) && $formIsValid) {
+            $page = 'deed-poll';
         }
     }
 
@@ -123,7 +122,7 @@
     <title>FREE DEED POLL.org</title>
     <meta name="description" content="Create your own deed poll">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="/<?php echo htmlspecialchars($page == 'form' ? '' : $page); ?>" />
+    <link rel="canonical" href="/<?php echo htmlspecialchars(in_array($page, [ 'form', 'deed-poll' ]) ? '' : $page); ?>" />
 <?php if (in_array($page, [ 'deed-poll' ])) { ?>
     <meta name="robots" content="noindex" />
 <?php } ?>

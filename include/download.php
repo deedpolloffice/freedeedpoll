@@ -47,7 +47,8 @@ $ret = str_replace('(TYPE OF CITIZEN)', escape_rtf($citizen), $ret);
 $ret = str_replace('(SECTION)', escape_rtf(preg_replace('/_[a-z]+$/', '', $data['citizenship']['value'])), $ret);
 $address = [];
 foreach ([ 'line_1', 'line_2', 'city', 'zip' ] as $part) {
-    $address[] = $data[$key = "address_{$part}"]['value'] != '' ? $data[$key]['value'] : '';
+    if ($data[$key = "address_{$part}"]['value'] == '') continue;
+    $address[] = $data[$key]['value'];
 }
 $ret = str_replace('(' . strtoupper(str_replace('_', ' ', $type)) . 'ADDRESS)', escape_rtf(implode(', ', $address)), $ret);
 $useTwoWitnesses = $data['suitable_for_enrolment']['value'] || $data['use_second_witness']['value'];
@@ -78,7 +79,7 @@ $ret = str_replace('(MONTH)', escape_rtf($month), $ret);
 $ret = str_replace('(YEAR)',  escape_rtf($year), $ret);
 #echo $ret;die;
 
-if ($_REQUEST['format'] == 'pdf') {
+if (isset($_POST['pdf']) || $_REQUEST['format'] == 'pdf') {
     $tempFileNameBase = "/tmp/freedeedpoll_" . time() . '_' . rand(0, 1000);
     if (!file_put_contents($fileName = "$tempFileNameBase.rtf", $ret)) {
 	throw new \Exception("Temporary file '$fileName' could not be written");
