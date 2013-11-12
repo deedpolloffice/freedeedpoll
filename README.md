@@ -34,14 +34,7 @@ Contact details
 
 [Deed Poll Office](http://deed-poll-office.org.uk/) is a private limited company registered as Deed Poll Office Ltd, in England & Wales, with company number 8126967.
 
-Registered address:
+Our registered address is: 24 Nicholas Street, Chester, CH1 2AU, U.K.
 
-<ul>
-    <li style="list-style-type: none;"> 24 Nicholas Street
-    <li style="list-style-type: none;"> Chester
-    <li style="list-style-type: none;"> CH1 2AU
-    <li style="list-style-type: none;"> U.K.
-</ul>
-
-For ordinary enquiries you can contact Deed Poll Office at <freedeedpoll@deed-poll-office.org.uk>
+For any enquiries please contact Deed Poll Office at <freedeedpoll@deed-poll-office.org.uk>
 
