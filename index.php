@@ -119,7 +119,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>FREE DEED POLL.org</title>
+    <title>FREE DEED POLL</title>
     <meta name="description" content="Create your own deed poll">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="canonical" href="/<?php echo htmlspecialchars(in_array($page, [ 'form', 'deed-poll' ]) ? '' : $page); ?>" />
@@ -155,7 +155,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand brand" href="/">FREE DEED POLL.org</a>
+          <a class="navbar-brand brand" href="/">FREE DEED POLL</a>
         </div>
         <div class="navbar-collapse nav-collapse collapse">
           <ul class="nav navbar-nav">

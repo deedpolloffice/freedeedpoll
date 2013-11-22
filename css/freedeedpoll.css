@@ -26,7 +26,6 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
   Bootstrap v3.0.0
   <https://github.com/twbs/bootstrap/tree/v3.0.0>
@@ -49,7 +48,6 @@
 
   Copyright 2013 Twitter, Inc under the Apache 2.0 license.
  */
-
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 article,
 aside,
@@ -5573,8 +5571,15 @@ button.close {
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 .navbar .navbar-nav > li > a,
-.navbar-brand {
+.navbar-brand,
+.navbar .brand {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.navbar-brand,
+.navbar .brand {
+  margin: 7px;
+  border: 2px solid #ffffff;
+  padding: 6px 6px;
 }
 .navbar-inverse {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#04519b), color-stop(60%, #044687), to(#033769));

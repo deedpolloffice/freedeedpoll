@@ -26,7 +26,6 @@
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 /**
   Bootstrap v2.3.2
   <https://github.com/twbs/bootstrap/tree/v2.3.2>
@@ -63,7 +62,6 @@
   License for the specific language governing permissions and limitations under
   the License.
  */
-
 .clearfix {
   *zoom: 1;
 }
@@ -5316,8 +5314,15 @@ a.badge:focus {
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 .navbar .navbar-nav > li > a,
-.navbar-brand {
+.navbar-brand,
+.navbar .brand {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.navbar-brand,
+.navbar .brand {
+  margin: 7px;
+  border: 2px solid #ffffff;
+  padding: 6px 6px;
 }
 .navbar-inverse {
   background-color: #034381;
